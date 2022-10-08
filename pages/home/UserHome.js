@@ -5,14 +5,14 @@ function UserHome({ role }) {
   if (role && role === 'User') {
     return (
       <div className={styles.contentcontainer}>
-        <nav>
-          <ul>
-            <li>
-              <img src='/cart.svg' alt='cart' />
-            </li>
-          </ul>
-        </nav>
         <section>
+          <nav>
+            <ul>
+              <li>
+                <img src='/cart.svg' alt='cart' />
+              </li>
+            </ul>
+          </nav>
           <div className={styles.contentwrapper}>
             <div className={styles.tabs}>
               <div className={styles.categories}>

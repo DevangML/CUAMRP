@@ -7,6 +7,7 @@ const environment = process.env.NODE_ENV;
 
 export default function Home({ user }) {
   const role = user?.role;
+  console.log(`The user is: ${JSON.stringify(user?.role)}`);
   return (
     <div className={styles.container}>
       {!user && <Plogin />}
