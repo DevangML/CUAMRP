@@ -1,19 +1,20 @@
 import styles from '../styles/main.module.css';
-import StudentHome from './home/StudentHome';
-import TeacherHome from './home/TeacherHome';
+import UserHome from './home/UserHome';
+import AdminHome from './home/AdminHome';
 import Plogin from './Plogin.js';
 import { getSession } from 'next-auth/react';
 const environment = process.env.NODE_ENV;
 
-export default function Home({ user, marks, attendance }) {
-  const role = user?.role;
+export default function Home() {
+  const user = "S";
+  const role = undefined;
   return (
     <div className={styles.container}>
-      {!user && <Plogin />}
-      {user && role === 'Student' && (
-        <StudentHome role={role} marks={marks} attendance={attendance} />
+      {role === undefined && <Plogin />}
+      {user && role === 'User' && (
+        <UserHome role={role} />
       )}
-      {user && role === 'Teacher' && <TeacherHome role={role} />}
+      {user && role === 'Admin' && <AdminHome role={role} />}
     </div>
   );
 }
@@ -21,45 +22,25 @@ export default function Home({ user, marks, attendance }) {
 export async function getServerSideProps({ req }) {
   // Fetch data from external API
 
-  const session = await getSession({ req });
-  const email = session?.user.email;
+  // const session = await getSession({ req });
+  // const email = session?.user.email;
 
-  const url =
-    environment === 'production' ? 'https://semac.vercel.app/api' : `http://localhost:3000/api`;
+  // const url =
+  //   environment === 'production' ? 'https://semac.vercel.app/api' : `http://localhost:3000/api`;
 
-  let user = null,
-    marks = null,
-    attendance = null;
+  // let user = null;
 
-  if (email) {
-    const res = await fetch(`${url}/auth/user/?email=${email}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    user = await res.json();
+  // if (email) {
+  //   const res = await fetch(`${url}/auth/user/?email=${email}`, {
+  //     method: 'GET',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //   });
+  //   user = await res.json();
 
-    const roll = user.roll;
+  let user = "User";
 
-    if (user.role === 'Student') {
-      const response = await fetch(`${url}/collab/marks/?roll=${roll}`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      marks = await response.json();
-
-      const resp = await fetch(`${url}/attendance/student/?roll=${roll}`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      attendance = await resp.json();
-    }
-  }
   // Pass data to the page via props
-  return { props: { user, marks, attendance } };
+  return { props: { user } };
 }

@@ -1,0 +1,52 @@
+.cont,
+.cont form {
+  align-items: center;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-top-left-radius: 3vw;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  gap: 1vw;
+}
+
+.cont > * > input {
+  font-weight: 600;
+  text-align: center;
+  padding: 0.4vw;
+  font-size: 1.5vw;
+  border: none;
+  border-radius: 0.5vw;
+  max-width: 20%;
+}
+
+.cont h1 {
+  font-size: 2vw;
+  text-align: center;
+  color: khaki;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.cont a,
+.cont input[type='submit'],
+.cont button {
+  background-color: #0ff;
+  border: none;
+  border-radius: 0.8vw;
+  padding: 1vw;
+  font-family: 'Montserrat', sans-serif;
+  transition: 0.8s all cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: background-color;
+  font-size: 1.5vw;
+}
+
+.cont a:hover,
+.cont input[type='submit']:hover,
+.cont button:hover {
+  background-color: #00c6c6;
+}

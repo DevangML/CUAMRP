@@ -1,0 +1,73 @@
+.cont {
+  align-items: center;
+  background: url(../images/collab.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-top-left-radius: 3vw;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  left: 12%;
+  overflow: hidden;
+  padding-right: 12vw;
+  position: relative;
+  width: 100%;
+}
+
+.main {
+  -webkit-backdrop-filter: blur(2px);
+  align-items: center;
+  backdrop-filter: blur(2px);
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 0.125vw;
+  display: flex;
+  flex-direction: column;
+  gap: 15vh;
+  height: 45vh;
+  justify-content: flex-start;
+  align-items: center;
+  left: 2%;
+  overflow: hidden;
+  position: relative;
+  width: 50vw;
+  text-align: center;
+}
+
+.cont nav ul {
+  display: flex;
+  gap: 2vw;
+}
+
+.cont nav ul li {
+  display: inline;
+  margin: 0.063vw;
+}
+
+.cont nav {
+  align-items: center;
+  border-bottom-left-radius: 3vw;
+  border-bottom-right-radius: 3vw;
+  display: flex;
+  justify-content: center;
+  padding: 1vh;
+  position: fixed;
+  top: 12%;
+  width: 100vw;
+}
+
+.cont nav ul li button {
+  background-color: #0ff;
+  border: none;
+  border-radius: 0.5vw;
+  padding: 1vw;
+  transition: 0.8s all cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: background-color;
+  font-size: 1.5vw;
+}
+
+.cont nav ul li button:hover {
+  background-color: #00c6c6;
+}

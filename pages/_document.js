@@ -9,7 +9,7 @@ export default function Document() {
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <meta name="description" content="Description" />
         <meta name="keywords" content="Keywords" />
-        <title>SEMAC</title>
+        <title>CUAMRP</title>
 
         <link rel="manifest" href="/manifest.json" />
         <link href="/favicon-64.png" rel="icon" type="image/png" sizes="64x64" />
