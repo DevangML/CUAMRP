@@ -37,8 +37,7 @@ export async function getServerSideProps({ req }) {
     });
     user = await res.json();
 
-    let user = "User";
-
     // Pass data to the page via props
-    return { props: { user } };
   }
+  return { props: { user } };
+}

@@ -21,6 +21,7 @@ async function handle(req, res) {
         // Create a new user
         const { email, name, birthYear } = req.body;
         const user = await createUser(email, name, birthYear);
+        console.log('error in api');
         return res.json(user);
       }
       case 'PUT': {

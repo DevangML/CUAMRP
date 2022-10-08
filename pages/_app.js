@@ -7,11 +7,11 @@ import '../styles/globals.css';
 import '../styles/chatbox.css';
 
 function MyApp(props) {
-  const { Component, pageProps } = props;
+  const { Component, pageProps: { session, ...pageProps } } = props;
   return (
     <ThemeProvider theme={lightTheme}>
       <CssBaseline />
-      <SessionProvider>
+      <SessionProvider session={session}>
         <Header />
         <LeftNavbar />
         <Component {...pageProps} />
