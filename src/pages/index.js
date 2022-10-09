@@ -1,4 +1,4 @@
-import styles from '../styles/main.module.css';
+import styles from '../../styles/main.module.css';
 import UserHome from './home/UserHome';
 import AdminHome from './home/AdminHome';
 import Plogin from './Plogin.js';

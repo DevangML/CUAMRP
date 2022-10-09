@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../../../styles/main.module.css';
+import styles from '../../../../styles/main.module.css';
 import { useSession } from 'next-auth/react';
 
 function Header() {
@@ -10,7 +10,7 @@ function Header() {
         <h2>
           Hello, <span>User</span>
         </h2>
-        <p>welcome to the Semac.</p>
+        <p>welcome to the CUAMRP</p>
       </div>
       {status === 'authenticated' && (
         <div className={styles.profile}>

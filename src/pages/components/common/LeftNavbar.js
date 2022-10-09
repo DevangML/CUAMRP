@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../../../styles/main.module.css';
+import styles from '../../../../styles/main.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faBookOpen,
@@ -23,7 +23,14 @@ function LeftNavbar() {
               icon={faTachometerAlt}
               style={{ width: '2vw', fontSize: '1.5vw', cursor: 'pointer' }}
             />{' '}
-            <a href="/">Dashboard</a>
+            <a href="/home/StarMart">STARMART</a>
+          </li>
+          <li>
+            <FontAwesomeIcon
+              icon={faTachometerAlt}
+              style={{ width: '2vw', fontSize: '1.5vw', cursor: 'pointer' }}
+            />{' '}
+            <a href="/">DASHBOARD</a>
           </li>
           <li>
             <FontAwesomeIcon

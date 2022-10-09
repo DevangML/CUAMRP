@@ -1,15 +1,15 @@
 import React from 'react';
-import styles from '../../styles/main.module.css';
+import styles from '../../../styles/main.module.css';
 
 function UserHome({ role }) {
   if (role && role === 'User') {
     return (
       <div className={styles.contentcontainer}>
         <section>
-          <nav>
+          <nav className={styles.innerNav}>
             <ul>
               <li>
-                <img src='/cart.svg' alt='cart' />
+                <img src='/cart.svg' alt='cart' width={50} height={50} />
               </li>
             </ul>
           </nav>
