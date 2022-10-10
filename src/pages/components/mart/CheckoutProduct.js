@@ -6,7 +6,7 @@ import {
     addToBasket,
     removeFromBasket,
     removeGroupedFromBasket,
-} from "../slices/basketSlice";
+} from "../../../slices/basketSlice";
 
 function CheckoutProduct(props) {
     const dispatch = useDispatch();
