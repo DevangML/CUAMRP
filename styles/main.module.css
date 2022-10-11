@@ -112,6 +112,8 @@
 /* header css starts  */
 
 .headcontainer {
+    top: 0;
+    position: fixed;
     z-index: 8000;
     min-height: max-content;
     height: 11vh;
