@@ -1,6 +1,6 @@
 import { Chip } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import styles from '../../../../styles/Options.module.css';
+import styles from '../../../../../styles/Options.module.css';
 
 const Options = ({ getOptions, actionProvider }) => {
   const [options, setOptions] = useState([]);

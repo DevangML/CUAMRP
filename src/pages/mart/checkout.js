@@ -37,7 +37,7 @@ function Checkout() {
                                 className={`text-3xl ${items.length > 0 ? "border-b pb-4" : "pb-2"
                                     }`}>
                                 {items.length === 0
-                                    ? "Your Amazon Basket is empty."
+                                    ? "Your StarMart Basket is empty."
                                     : "Shopping Basket"}
                             </h1>
                             <TransitionGroup>

@@ -8,6 +8,7 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { selectItems } from "../../../slices/basketSlice";
+import logo from '../../../../images/logo.png';
 
 function Header(props) {
     const { data: session, status } = useSession();
@@ -21,7 +22,7 @@ function Header(props) {
                 <div className="mt-2 flex items-center flex-grow sm:flex-grow-0">
                     <Image
                         onClick={() => router.push("/home/StarMart")}
-                        src="https://links.papareact.com/f90"
+                        src={logo}
                         width={150}
                         height={40}
                         objectFit="contain"
@@ -50,24 +51,6 @@ function Header(props) {
                 {/* Right */}
                 <div className="text-white flex items-center text-xs space-x-6 mx-6 whitespace-nowrap">
                     <div
-                        onClick={!session ? signIn : signOut}
-                        className="link cursor-pointer">
-                        <p className="hover:underline">
-                            {session
-                                ? `Hello, ${session.user.name}`
-                                : "Sign In"}
-                        </p>
-                        <p className="font-extrabold md:text-sm">
-                            Account & Lists
-                        </p>
-                    </div>
-                    <div
-                        className="link"
-                        onClick={() => router.push("/mart/orders")}>
-                        <p>Returns</p>
-                        <p className="font-extrabold md:text-sm">& Orders</p>
-                    </div>
-                    <div
                         className="relative link flex items-center"
                         onClick={() => router.push("/mart/checkout")}>
                         <span
@@ -88,8 +71,6 @@ function Header(props) {
                     <MenuIcon className="h-6 mr-1" />
                     All
                 </p>
-                <p className="link">Prime Video</p>
-                <p className="link">Amazon Business</p>
                 <p className="link">Today's Deals</p>
                 <p className="link hidden lg:inline-flex">Electronics</p>
                 <p className="link hidden lg:inline-flex">Foods & Grocery</p>

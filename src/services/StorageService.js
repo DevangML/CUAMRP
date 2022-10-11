@@ -1,4 +1,4 @@
-const LOCALSTORAGE_KEY_PREFIX = "amazon-clone-ninja";
+const LOCALSTORAGE_KEY_PREFIX = "star-mart";
 
 export default {
     get(item) {
@@ -16,6 +16,6 @@ export default {
                 `${LOCALSTORAGE_KEY_PREFIX}:${item}`,
                 value
             );
-        } catch (e) {}
+        } catch (e) { }
     },
 };
