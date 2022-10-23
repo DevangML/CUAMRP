@@ -37,3 +37,13 @@ yarn-error.log*
 /.env
 # Sentry
 .sentryclirc
+
+# Flask
+/src/services/bin
+/src/services/include
+/src/services/lib
+/src/services/venv
+/src/services/_pycache_
+
+.Python
+
