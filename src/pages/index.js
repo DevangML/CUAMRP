@@ -7,14 +7,13 @@ const environment = process.env.NODE_ENV;
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-export default function Home({ user, time }) {
+export default function Home({ user, users }) {
     const role = user?.role;
-    console.log(time);
     return (
         <div className={styles.container}>
             {!user && <Plogin />}
             {user && role === 'User' && <UserHome role={role} />}
-            {user && role === 'Admin' && <AdminHome role={role} />}
+            {user && role === 'Admin' && <AdminHome role={role} users={users} />}
         </div>
     );
 }
@@ -41,13 +40,14 @@ export async function getServerSideProps({ req }) {
         // Pass data to the page via props
     }
 
-    const rez = await fetch(`${url}/time`, {
+    const res = await fetch(`${url}/user/users`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
         },
     });
-    time = await rez.json();
 
-    return { props: { user, time } };
+    const users = await res.json();
+
+    return { props: { user, users } };
 }

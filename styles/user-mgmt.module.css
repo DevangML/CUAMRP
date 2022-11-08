@@ -1,0 +1,43 @@
+.cont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background: url(../images/rbg.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.cont > * > div {
+    background: rgba(112, 171, 235, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2vw;
+}
+
+.cont > * > div > a {
+    background-color: white;
+    padding: 0.8vw;
+    border-radius: 0.7vw;
+    background: #ff522fdd;
+    color: rgb(244, 244, 185);
+    transition: 2s all cubic-bezier(0.23, 1, 0.32, 1);
+    border: 0.2em solid rgba(255, 255, 255, 0.816);
+    will-change: background color border;
+}
+
+.cont > * > div > a:hover {
+    background: #ff522f;
+    color: rgb(250, 250, 115);
+    border: 0.2em solid white;
+}

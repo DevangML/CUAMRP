@@ -24,14 +24,14 @@ module.exports = withPWA({
         ];
     },
 
-    async rewrites() {
-        return [
-            {
-                source: '/api/:path*',
-                destination: 'http://localhost:5000/:path*',
-            },
-        ];
-    },
+    // async rewrites() {
+    //     return [
+    //         {
+    //             source: '/api/:path*',
+    //             destination: 'http://localhost:5000/:path*',
+    //         },
+    //     ];
+    // },
 
     images: {
         domains: ['links.papareact.com', 'fakestoreapi.com'],

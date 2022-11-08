@@ -53,3 +53,11 @@ model VerificationToken {
 
   @@unique([identifier, token])
 }
+
+model Userz {
+    id  String  @id @default(auto()) @map("_id") @db.ObjectId
+    name          String?
+    email         String?
+    phone         String?
+    customerId    String @unique
+}
