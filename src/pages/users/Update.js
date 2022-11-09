@@ -1,13 +1,12 @@
-import { toast } from 'react-toastify';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Tilt from 'react-parallax-tilt';
 import styles from '../../../styles/register.module.css';
 
 const Register = () => {
     const [data, setData] = useState({
-        name: '',
         email: '',
-        phone: '',
+        churn: '',
+        memberTier: '',
     });
 
     const changeHandler = (e) => {
@@ -22,7 +21,7 @@ const Register = () => {
         e.preventDefault();
 
         const res = await fetch('/api/user/users', {
-            method: 'POST',
+            method: 'PUT',
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
@@ -33,7 +32,7 @@ const Register = () => {
         const resp = await res.json();
         console.log(resp);
         res.id !== null &&
-            toast('USER REGISTERED SUCCESSFULLY', {
+            toast('USER UPDATED SUCCESSFULLY', {
                 hideProgressBar: true,
                 autoClose: 2000,
                 type: 'success',
@@ -49,15 +48,8 @@ const Register = () => {
                         className="h-full flex flex-col justify-evenly items-center"
                         onSubmit={submitHandler}>
                         <div className="text-white font-poppins text-2xl tracking-widest">
-                            User Registration
+                            User Updation
                         </div>
-                        <input
-                            type="text"
-                            placeholder="Name"
-                            className="input-text"
-                            name="name"
-                            onChange={changeHandler}
-                        />
                         <input
                             type="email"
                             placeholder="Email"
@@ -66,10 +58,17 @@ const Register = () => {
                             onChange={changeHandler}
                         />
                         <input
-                            type="tel"
-                            placeholder="Phone"
+                            type="text"
+                            placeholder="Churn Rate"
                             className="input-text"
-                            name="phone"
+                            name="churn"
+                            onChange={changeHandler}
+                        />
+                        <input
+                            type="text"
+                            placeholder="Member Tier"
+                            className="input-text"
+                            name="memberTier"
                             onChange={changeHandler}
                         />
                         <input

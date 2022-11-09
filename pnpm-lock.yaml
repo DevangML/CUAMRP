@@ -49,7 +49,7 @@ specifiers:
   react-parallax-tilt: ^1.7.68
   react-redux: ^8.0.4
   react-responsive-carousel: ^3.2.23
-  react-toastify: ^9.0.8
+  react-toastify: ^9.1.1
   react-transition-group: ^4.4.5
   react-use-downloader: ^1.2.0
   tailwindcss: ^3.1.8

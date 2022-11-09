@@ -4,8 +4,6 @@ import AdminHome from './home/AdminHome';
 import Plogin from './Plogin.js';
 import { getSession } from 'next-auth/react';
 const environment = process.env.NODE_ENV;
-import { useState, useEffect } from 'react';
-import axios from 'axios';
 
 export default function Home({ user, users }) {
     const role = user?.role;

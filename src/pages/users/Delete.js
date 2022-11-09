@@ -1,39 +1,31 @@
-import { toast } from 'react-toastify';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Tilt from 'react-parallax-tilt';
 import styles from '../../../styles/register.module.css';
 
 const Register = () => {
-    const [data, setData] = useState({
-        name: '',
-        email: '',
-        phone: '',
-    });
+    const [email, setEmail] = useState('');
 
     const changeHandler = (e) => {
         e.preventDefault();
-        setData({
-            ...data,
-            [e.target.name]: e.target.value,
-        });
+        setEmail(e.target.value);
     };
 
     const submitHandler = async (e) => {
         e.preventDefault();
 
         const res = await fetch('/api/user/users', {
-            method: 'POST',
+            method: 'DELETE',
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(data),
+            body: JSON.stringify(email),
         });
 
         const resp = await res.json();
         console.log(resp);
         res.id !== null &&
-            toast('USER REGISTERED SUCCESSFULLY', {
+            toast('USER DELETED SUCCESSFULLY', {
                 hideProgressBar: true,
                 autoClose: 2000,
                 type: 'success',
@@ -49,27 +41,13 @@ const Register = () => {
                         className="h-full flex flex-col justify-evenly items-center"
                         onSubmit={submitHandler}>
                         <div className="text-white font-poppins text-2xl tracking-widest">
-                            User Registration
+                            User Deletion
                         </div>
-                        <input
-                            type="text"
-                            placeholder="Name"
-                            className="input-text"
-                            name="name"
-                            onChange={changeHandler}
-                        />
                         <input
                             type="email"
                             placeholder="Email"
                             className="input-text"
                             name="email"
-                            onChange={changeHandler}
-                        />
-                        <input
-                            type="tel"
-                            placeholder="Phone"
-                            className="input-text"
-                            name="phone"
                             onChange={changeHandler}
                         />
                         <input

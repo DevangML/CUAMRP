@@ -56,8 +56,11 @@ model VerificationToken {
 
 model Userz {
     id  String  @id @default(auto()) @map("_id") @db.ObjectId
-    name          String?
-    email         String?
-    phone         String?
+    name          String
+    email         String @unique
+    phone         String
     customerId    String @unique
+    churn         String
+    loyaltyPoints String
+    memberTier    String
 }

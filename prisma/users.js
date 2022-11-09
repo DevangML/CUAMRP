@@ -8,9 +8,9 @@ export const getAllUsers = async () => {
     return users;
 };
 
-export const getUser = async (customerId) => {
+export const getUser = async (email) => {
     const user = await prisma.userz.findUnique({
-        where: { customerId },
+        where: { email },
     });
     return user;
 };
@@ -24,29 +24,33 @@ export const createUser = async (name, email, phone) => {
             email: name,
             phone: phone,
             customerId: customerId,
+            churn: '0',
+            loyaltyPoints: '0',
+            memberTier: 'silver',
         },
     });
     return user;
 };
 
 // UPDATE
-export const updateUser = async (customerId, updateData) => {
+export const updateUser = async (email, churn, memberTier) => {
     const user = await prisma.userz.update({
         where: {
-            customerId,
+            email,
         },
         data: {
-            ...updateData,
+            churn,
+            memberTier,
         },
     });
     return user;
 };
 
 // DELETE
-export const deleteUser = async (customerId) => {
+export const deleteUser = async (email) => {
     const user = await prisma.userz.delete({
         where: {
-            customerId,
+            email,
         },
     });
     return user;
