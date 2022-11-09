@@ -33,14 +33,13 @@ export const createUser = async (name, email, phone) => {
 };
 
 // UPDATE
-export const updateUser = async (email, churn, memberTier) => {
+export const updateUser = async (email, updateData) => {
     const user = await prisma.userz.update({
         where: {
             email,
         },
         data: {
-            churn,
-            memberTier,
+            ...updateData,
         },
     });
     return user;

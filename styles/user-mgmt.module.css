@@ -9,34 +9,57 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    gap: 2vw;
 }
 
-.cont > * > div {
+.tilt {
     background: rgba(112, 171, 235, 0.15);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.tilt > * > div {
+    font-size: 2.3em;
+}
+
+.tilt > * > input {
+    padding: 0.5vw;
+    font-size: 1.5em;
+    border-radius: 0.5em;
+    outline: none;
+}
+
+.cont > a,
+.cont > button {
+    background: rgba(112, 171, 235, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(5px);
+    font-size: 2em;
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 1.5em;
+    border: 1px solid rgba(255, 255, 255, 0.18);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 2vw;
-}
-
-.cont > * > div > a {
+    padding: 2.5vw;
+    margin-left: 10vw;
     background-color: white;
     padding: 0.8vw;
     border-radius: 0.7vw;
     background: #ff522fdd;
     color: rgb(244, 244, 185);
-    transition: 2s all cubic-bezier(0.23, 1, 0.32, 1);
+    transition: 4s all cubic-bezier(0.25, 0.46, 0.45, 0.94);
     border: 0.2em solid rgba(255, 255, 255, 0.816);
     will-change: background color border;
 }
 
-.cont > * > div > a:hover {
+.cont > a:hover,
+.cont > button:hover {
     background: #ff522f;
     color: rgb(250, 250, 115);
     border: 0.2em solid white;

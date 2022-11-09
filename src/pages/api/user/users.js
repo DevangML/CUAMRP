@@ -9,8 +9,12 @@ async function handle(req, res) {
                 if (req.query.email) {
                     // Get a single user if id is provided is the query
                     // api/users?id=1
-                    const user = await getUser(req.query.email);
-                    return res.status(200).json(user);
+                    try {
+                        const user = await getUser(req.query.email);
+                        return res.status(200).json(user);
+                    } catch (e) {
+                        return res.status(500).json({ e, success: false });
+                    }
                 } else {
                     // Otherwise, fetch all users
                     const users = await getAllUsers();
@@ -26,8 +30,8 @@ async function handle(req, res) {
             }
             case 'PUT': {
                 // Update an existing user
-                const { email, churn, memberTier } = req.body;
-                const user = await updateUser(email, churn, memberTier);
+                const { ...updateData } = req.body;
+                const user = await updateUser(req.query.email, updateData);
                 return res.json(user);
             }
             case 'DELETE': {
