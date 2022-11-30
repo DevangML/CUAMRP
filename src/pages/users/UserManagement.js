@@ -39,6 +39,17 @@ export default function UserManagement({ users, data }) {
                     )}
                 </section>
             )}
+            {(!clicked === true || crud === true) && (
+                <div
+                    className={styles.contentwrapper}
+                    onClick={(e) => {
+                        e.preventDefault();
+                        setClicked(false);
+                        crud === true && setCrud(false);
+                    }}>
+                    <Image quality={100} src={image} alt="Back" width={96} height={96} />
+                </div>
+            )}
             {clicked && low && <LowChurn email={email} loyaltyPoints={loyaltyPoints} />}
             {clicked && high && <HighChurn email={email} />}
         </>
