@@ -16,7 +16,24 @@ export const getUser = async (email) => {
 };
 
 // CREATE
-export const createUser = async (name, email, phone) => {
+export const createUser = async (
+    name,
+    email,
+    phone,
+    CreditScore,
+    Age,
+    Tenure,
+    Balance,
+    NumberOfProducts,
+    HasCrCard,
+    IsActiveMember,
+    EstimatedSalary,
+    France,
+    Germany,
+    Spain,
+    Female,
+    Male
+) => {
     const customerId = JSON.stringify(name).substring(1, 4) + JSON.stringify(v4()).substring(1, 4);
     const user = await prisma.userz.create({
         data: {
@@ -27,6 +44,19 @@ export const createUser = async (name, email, phone) => {
             churn: '0',
             loyaltyPoints: '0',
             memberTier: 'silver',
+            CreditScore: CreditScore,
+            Age: Age,
+            Tenure: Tenure,
+            Balance,
+            NumberOfProducts,
+            HasCrCard,
+            IsActiveMember,
+            EstimatedSalary,
+            France,
+            Germany,
+            Spain,
+            Female,
+            Male,
         },
     });
     return user;

@@ -63,4 +63,17 @@ model Userz {
     churn         String
     loyaltyPoints String
     memberTier    String
+    CreditScore   String
+    Age           String
+    Tenure        String
+    Balance       String
+    NumberOfProducts  String
+    HasCrCard       String
+    IsActiveMember String
+    EstimatedSalary String
+    France  String
+    Germany String
+    Spain String
+    Female String
+    Male String
 }

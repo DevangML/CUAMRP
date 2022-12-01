@@ -25,6 +25,7 @@ export async function getServerSideProps({ req }) {
 
     let user = null;
     let time = null;
+    let users = null;
 
     if (email) {
         const res = await fetch(`${url}/auth/user/?email=${email}`, {
@@ -38,14 +39,15 @@ export async function getServerSideProps({ req }) {
         // Pass data to the page via props
     }
 
-    const res = await fetch(`${url}/user/users`, {
+    const resp = await fetch(`${url}/user/users`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
         },
     });
 
-    const users = await res.json();
+    users = await resp.json();
+    console.log(`Users in index: ${users}`);
 
     return { props: { user, users } };
 }

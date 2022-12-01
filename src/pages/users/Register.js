@@ -8,6 +8,19 @@ const Register = () => {
         name: '',
         email: '',
         phone: '',
+        CreditScore: '',
+        Age: '',
+        Tenure: '',
+        Balance: '',
+        NumberOfProducts: '',
+        HasCrCard: '',
+        IsActiveMember: '',
+        EstimatedSalary: '',
+        France: '',
+        Germany: '',
+        Spain: '',
+        Female: '',
+        Male: '',
     });
 
     const changeHandler = (e) => {
@@ -72,6 +85,90 @@ const Register = () => {
                             name="phone"
                             onChange={changeHandler}
                         />
+                        <input
+                            type="text"
+                            placeholder="Credit Score"
+                            className="input-text"
+                            name="CreditScore"
+                            onChange={changeHandler}
+                        />
+                        <input
+                            type="text"
+                            placeholder="Tenure"
+                            className="input-text"
+                            name="Tenure"
+                            onChange={changeHandler}
+                        />
+                        <input
+                            type="text"
+                            placeholder="Balance"
+                            className="input-text"
+                            name="Balance"
+                            onChange={changeHandler}
+                        />
+                        <input
+                            type="text"
+                            placeholder="NumberOfProducts"
+                            className="input-text"
+                            name="NumberOfProducts"
+                            onChange={changeHandler}
+                        />{' '}
+                        <input
+                            type="text"
+                            placeholder="HasCrCard"
+                            className="input-text"
+                            name="HasCrCard"
+                            onChange={changeHandler}
+                        />{' '}
+                        <input
+                            type="text"
+                            placeholder="IsActiveMember"
+                            className="input-text"
+                            name="IsActiveMember"
+                            onChange={changeHandler}
+                        />{' '}
+                        <input
+                            type="text"
+                            placeholder="EstimatedSalary"
+                            className="input-text"
+                            name="EstimatedSalary"
+                            onChange={changeHandler}
+                        />{' '}
+                        <input
+                            type="text"
+                            placeholder="France"
+                            className="input-text"
+                            name="France"
+                            onChange={changeHandler}
+                        />{' '}
+                        <input
+                            type="text"
+                            placeholder="Germany"
+                            className="input-text"
+                            name="Germany"
+                            onChange={changeHandler}
+                        />{' '}
+                        <input
+                            type="text"
+                            placeholder="Spain"
+                            className="input-text"
+                            name="Spain"
+                            onChange={changeHandler}
+                        />{' '}
+                        <input
+                            type="text"
+                            placeholder="Female"
+                            className="input-text"
+                            name="Female"
+                            onChange={changeHandler}
+                        />{' '}
+                        <input
+                            type="text"
+                            placeholder="Male"
+                            className="input-text"
+                            name="Male"
+                            onChange={changeHandler}
+                        />{' '}
                         <input
                             type="Submit"
                             className="cursor-pointer font-poppins rounded-full px-5 py-1 bg-white bg-opacity-50 hover:bg-white hover:bg-opacity-80 "
