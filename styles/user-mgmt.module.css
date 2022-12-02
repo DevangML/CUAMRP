@@ -13,12 +13,13 @@
 }
 
 .tilt {
-    background: rgba(112, 171, 235, 0.15);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1vw;
+    border-radius: 2em;
+    background: linear-gradient(-45deg, #ffbe25 0%, #7d0a79 100%);
 }
 
 .tilt > * > div {
@@ -30,6 +31,18 @@
     font-size: 1.5em;
     border-radius: 0.5em;
     outline: none;
+}
+
+.tilt > p {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: antiquewhite;
+}
+
+.tilt > ul > li {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: antiquewhite;
 }
 
 .cont > a,
@@ -53,6 +66,7 @@
     border-radius: 0.7vw;
     background: #ff522fdd;
     color: rgb(244, 244, 185);
+    cursor: pointer;
     transition: 4s all cubic-bezier(0.25, 0.46, 0.45, 0.94);
     border: 0.2em solid rgba(255, 255, 255, 0.816);
     will-change: background color border;
@@ -63,4 +77,105 @@
     background: #ff522f;
     color: rgb(250, 250, 115);
     border: 0.2em solid white;
+}
+
+.gold {
+    --size: 40px;
+    --padding-vertical: calc(var(--size) / 4);
+    background-color: gold;
+    border: 0;
+    border-radius: calc(var(--size) * 0.2);
+    font-size: var(--size);
+    padding: var(--padding-vertical) var(--size);
+    padding-bottom: calc(var(--padding-vertical) + calc(var(--size) * 0.3));
+    box-shadow: 0 calc(0px - (var(--size) * 0.3)) 0 0px rgba(0, 0, 0, 0.5) inset;
+    outline: calc(var(--size) * 0.1) solid black;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.gold:hover {
+    padding-bottom: calc(var(--padding-vertical) + calc(var(--size) * 0.3) + var(--size) * 0.2);
+    box-shadow: 0 calc(0px - ((var(--size) * 0.3 + var(--size) * 0.2))) 0 0px rgba(0, 0, 0, 0.5)
+        inset;
+    transform: translateY(calc(0px - var(--size) * 0.1)) translatez(0);
+}
+.gold:hover:before {
+    animation-duration: 4s;
+    animation-name: shining_hover;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in;
+    animation-delay: 0s;
+}
+.gold:hover:active {
+    padding-bottom: calc(var(--padding-vertical) + calc(var(--size) * 0.3));
+    box-shadow: 0 calc(0px - (var(--size) * 0.3)) 0 0px rgba(0, 0, 0, 0.5) inset;
+    transform: translateY(0) translatez(0);
+}
+.gold:hover:active:before {
+    animation-duration: 4s;
+    animation-name: shining;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in;
+    animation-delay: 0s;
+}
+.gold label {
+    --border-color: rgba(0, 0, 0, 1);
+    --border-width: calc(var(--size) * 0.04);
+    font-family: Fredoka One;
+    color: white;
+    filter: drop-shadow(0 calc(var(--size) * 0.125) 0px black);
+    text-shadow: calc(0px - var(--border-width)) 0 var(--border-color),
+        0 var(--border-width) var(--border-color), var(--border-width) 0 var(--border-color),
+        0 calc(0px - var(--border-width)) var(--border-color);
+    pointer-events: none;
+}
+.gold:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: radial-gradient(rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0) 750%);
+    border-radius: 50%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+.gold:before {
+    content: '';
+    width: 0px;
+    height: calc(var(--size) * 4);
+    transform: rotatez(25deg);
+    box-shadow: 0px 0 20px 5px rgba(255, 255, 255, 0.75);
+    position: absolute;
+    top: calc(0px - var(--size));
+    left: calc(0px - var(--size) * 1.5);
+    animation-duration: 4s;
+    animation-name: shining;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in;
+    animation-delay: 2s;
+}
+
+@keyframes shining {
+    0% {
+        left: calc(0px - var(--size) * 1.5);
+    }
+    10% {
+        left: calc(100% + var(--size) * 1.5);
+    }
+    100% {
+        left: calc(100% + var(--size) * 1.5);
+    }
+}
+@keyframes shining_hover {
+    0% {
+        left: calc(0px - var(--size) * 1.5);
+    }
+    10% {
+        left: calc(100% + var(--size) * 1.5);
+    }
+    100% {
+        left: calc(100% + var(--size) * 1.5);
+    }
 }

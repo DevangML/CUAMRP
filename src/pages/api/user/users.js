@@ -23,8 +23,42 @@ async function handle(req, res) {
             }
             case 'POST': {
                 // Create a new user
-                const { email, name, phone } = req.body;
-                const user = await createUser(email, name, phone);
+                const {
+                    email,
+                    name,
+                    phone,
+                    CreditScore,
+                    Age,
+                    Tenure,
+                    Balance,
+                    NumberOfProducts,
+                    HasCrCard,
+                    IsActiveMember,
+                    EstimatedSalary,
+                    France,
+                    Germany,
+                    Spain,
+                    Female,
+                    Male,
+                } = req.body;
+                const user = await createUser(
+                    email,
+                    name,
+                    phone,
+                    CreditScore,
+                    Age,
+                    Tenure,
+                    Balance,
+                    NumberOfProducts,
+                    HasCrCard,
+                    IsActiveMember,
+                    EstimatedSalary,
+                    France,
+                    Germany,
+                    Spain,
+                    Female,
+                    Male
+                );
                 console.log('error in api');
                 return res.json(user);
             }

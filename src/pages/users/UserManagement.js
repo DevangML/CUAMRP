@@ -39,7 +39,7 @@ export default function UserManagement({ users, data }) {
                     )}
                 </section>
             )}
-            {(!clicked === true || crud === true) && (
+            {!clicked && (
                 <div
                     className={styles.contentwrapper}
                     onClick={(e) => {

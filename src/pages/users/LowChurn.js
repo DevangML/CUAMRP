@@ -113,7 +113,9 @@ const LowChurn = ({ email, loyaltyPoints }) => {
                         <Tilt>
                             <div
                                 className={`container h-96 w-96 bg-white bg-opacity-10 rounded-2xl shadow-5xl relative z-2 border border-opacity-30 border-r-0 border-b-0 backdrop-filter backdrop-blur-sm ${styles.tilt}`}>
-                                <h2>Silver Section</h2>
+                                <button className={styles.gold}>
+                                    <label>Dear Silver Member</label>
+                                </button>
                                 <p>{50 - loyaltyPoints} to GOLD</p>
                                 <p>YOUR MEMBER BENEFITS ARE:</p>
                                 <ul>
@@ -126,7 +128,10 @@ const LowChurn = ({ email, loyaltyPoints }) => {
                         <Tilt>
                             <div
                                 className={`container h-96 w-96 bg-white bg-opacity-10 rounded-2xl shadow-5xl relative z-2 border border-opacity-30 border-r-0 border-b-0 backdrop-filter backdrop-blur-sm ${styles.tilt}`}>
-                                <h2>Gold Section</h2>
+                                <button className={styles.gold}>
+                                    <label>Dear Gold Member</label>
+                                </button>
+                                <br />
                                 <p>{75 - loyaltyPoints} to PLATINUM</p>
                                 <p>YOUR MEMBER BENEFITS ARE:</p>
                                 <ul>
@@ -140,7 +145,9 @@ const LowChurn = ({ email, loyaltyPoints }) => {
                         <Tilt>
                             <div
                                 className={`container h-96 w-96 bg-white bg-opacity-10 rounded-2xl shadow-5xl relative z-2 border border-opacity-30 border-r-0 border-b-0 backdrop-filter backdrop-blur-sm ${styles.tilt}`}>
-                                <h2>Dear Platinum Section</h2>
+                                <button className={styles.gold}>
+                                    <label>Dear Platinum Member</label>
+                                </button>
                                 <p>YOUR MEMBER BENEFITS ARE:</p>
                                 <ul>
                                     <li>Spotify premium free for 1 year</li>
