@@ -77,3 +77,20 @@ model Userz {
     Female String
     Male String
 }
+
+model freqItems {
+  id  String  @id @default(auto()) @map("_id") @db.ObjectId
+  email         String?   @unique
+  items Item[]
+}
+
+type Item {
+  items String[]
+  date DateTime   @default(now())
+}
+
+model WishList {
+  id  String  @id @default(auto()) @map("_id") @db.ObjectId
+  email         String?   @unique
+  
+}
