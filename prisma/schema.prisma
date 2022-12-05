@@ -86,11 +86,22 @@ model freqItems {
 
 type Item {
   items String[]
-  date DateTime   @default(now())
 }
 
 model WishList {
   id  String  @id @default(auto()) @map("_id") @db.ObjectId
   email         String?   @unique
-  
+  items String[]
+}
+
+model OffDis {
+  id  String  @id @default(auto()) @map("_id") @db.ObjectId
+  email         String?   @unique
+  offers String[]
+  Discounts Dis[]
+}
+
+type Dis {
+  item String
+  discount String
 }

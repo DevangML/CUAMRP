@@ -8,11 +8,33 @@ import { useSession } from 'next-auth/react';
 import { groupBy } from 'lodash';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styles from '../../../styles/mart.module.css';
+import { useState } from 'react';
 
 function Checkout() {
     const items = useSelector(selectItems);
     const total = useSelector(selectTotal);
     const { data: session, status } = useSession();
+
+    let d = [];
+    for (let i = 0; i < items.length; i++) {
+        d.push(items[i].title);
+    }
+    const dbHandler = async (e) => {
+        e.preventDefault();
+
+        const res = await fetch(`/api/mart/freq?email=${session.user.email}`, {
+            method: 'PUT',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ list: d }),
+        });
+
+        const resp = await res.json();
+
+        console.log(`Response is : ${JSON.stringify(resp)}`);
+    };
 
     const groupedItems = Object.values(groupBy(items, 'id'));
     return (
@@ -52,7 +74,6 @@ function Checkout() {
                                             description={group[0].description}
                                             category={group[0].category}
                                             image={group[0].image}
-                                            hasPrime={group[0].hasPrime}
                                             quantity={group.length}
                                         />
                                     </CSSTransition>
@@ -85,6 +106,15 @@ function Checkout() {
                                     'from-gray-300 to-gray-500 border-gray-200 text-gray-300 cursor-not-allowed hover:from-gray-300'
                                 }`}>
                                 {!session ? 'Sign in to checkout' : 'Proceed to checkout'}
+                            </button>
+                            <button
+                                onClick={dbHandler}
+                                disabled={!session}
+                                className={`button mt-2 ${
+                                    !session &&
+                                    'from-gray-300 to-gray-500 border-gray-200 text-gray-300 cursor-not-allowed hover:from-gray-300'
+                                }`}>
+                                {!session ? 'Sign in to checkout' : 'Add To DB'}
                             </button>
                         </div>
                     </CSSTransition>
