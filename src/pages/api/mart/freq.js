@@ -1,30 +1,44 @@
-// pages/api/user
+import connectDB from '../../../middleware/mongodb';
+import Freq from '../../../models/freq';
+const db = process.env.DATABASE_URL;
 
-import { getFreq, updateFreq } from '../../../../prisma/freq';
-
-async function handle(req, res) {
-    try {
-        switch (req.method) {
-            case 'GET': {
+const handler = async (req, res) => {
+    if (req.method === 'PUT') {
+        // Check if name, email or password is provided
+        const { email, items } = req.body;
+        if (email && items) {
+            const freqItem = await db.freqItems.findOne({ email: email }).catch((e) => {
+                console.log(e);
+            });
+            if (freqItem === null) {
                 try {
-                    const user = await getFreq(req.query.email);
-                    return res.status(200).json(user);
-                } catch (e) {
-                    return res.status(500).json({ e, success: false });
+                    let user = new Freq({
+                        email: email,
+                        items: items,
+                    });
+                    // Create new user
+                    let freqCreated = await user.save();
+                    return res.status(200).send(freqCreated);
+                } catch (error) {
+                    return res.status(500).send(error.message);
                 }
             }
-            case 'PUT': {
-                // Update an existing user
-                const { list } = req.body;
-                const upFreq = await updateFreq(req.query.email, list);
-                return res.json(upFreq);
+            try {
+                const freqUp = await db.freqItems.findAndUpdate(
+                    { email: email },
+                    { $push: { items: items } },
+                    { new: true }
+                );
+                return res.status(200).send(freqUp);
+            } catch (error) {
+                return res.status(500).send(error.message);
             }
-            default:
-                break;
+        } else {
+            res.status(422).send('data_incomplete');
         }
-    } catch (error) {
-        return res.status(500).json({ ...error, message: error.message });
+    } else {
+        res.status(422).send('req_method_not_supported');
     }
-}
+};
 
-export default handle;
+export default connectDB(handler);

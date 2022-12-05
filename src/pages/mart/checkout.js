@@ -22,13 +22,13 @@ function Checkout() {
     const dbHandler = async (e) => {
         e.preventDefault();
 
-        const res = await fetch(`/api/mart/freq?email=${session.user.email}`, {
+        const res = await fetch(`/api/mart/freq`, {
             method: 'PUT',
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ list: d }),
+            body: JSON.stringify({ email: session.user.email, items: d }),
         });
 
         const resp = await res.json();
