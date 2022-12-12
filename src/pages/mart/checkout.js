@@ -9,6 +9,7 @@ import { groupBy } from 'lodash';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styles from '../../../styles/mart.module.css';
 import { useState } from 'react';
+import axios from 'axios';
 
 function Checkout() {
     const items = useSelector(selectItems);
@@ -22,18 +23,14 @@ function Checkout() {
     const dbHandler = async (e) => {
         e.preventDefault();
 
-        const res = await fetch(`/api/mart/freq`, {
-            method: 'PUT',
-            mode: 'cors',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email: session.user.email, items: d }),
-        });
-
-        const resp = await res.json();
-
-        console.log(`Response is : ${JSON.stringify(resp)}`);
+        await axios
+            .put(`/api/mart/freq`, { email: session.user.email, items: d })
+            .then((res) => {
+                console.log(`Response is : ${JSON.stringify(res.response)}`);
+            })
+            .catch((err) => {
+                console.log(`Response is: ${JSON.stringify(err.response)}`);
+            });
     };
 
     const groupedItems = Object.values(groupBy(items, 'id'));
