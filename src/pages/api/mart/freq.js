@@ -14,10 +14,10 @@ export default async function handler(req, res) {
             // Check if name, email or password is provided
             const { email, items } = req.body;
             if (email && items) {
-                await Freq.findOne({ email: email })
+                await Freq.findOne(email)
                     .then(async (res) => {
                         try {
-                            const freqUp = await db.freqItems.findAndUpdate(
+                            const freqUp = await Freq.findAndUpdate(
                                 { email: email },
                                 { $push: { items: items } },
                                 { new: true }
@@ -34,8 +34,11 @@ export default async function handler(req, res) {
                                 items: items,
                             });
                             // Create new user
-                            let freqCreated = await user.save();
-                            return res.status(200).json(freqCreated);
+                            const resp = await db.freqItems.findOne(email);
+                            if (resp === null) {
+                                await user.save();
+                            }
+                            return res.status(200).json(resp);
                         } catch (error) {
                             return res.status(500).json({ error, message: 'in error' });
                         }
