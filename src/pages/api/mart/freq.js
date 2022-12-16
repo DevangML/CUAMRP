@@ -14,33 +14,40 @@ export default async function handler(req, res) {
             // Check if name, email or password is provided
             const { email, items } = req.body;
             if (email && items) {
-                await Freq.findOne(email)
-                    .then(async (res) => {
-                        try {
-                            const freqUp = await Freq.findAndUpdate(
+                await Freq.findOne({ email })
+                    .then(async (fes) => {
+                        if (fes !== null) {
+                            await Freq.findOneAndUpdate(
                                 { email: email },
                                 { $push: { items: items } },
                                 { new: true }
-                            );
-                            return res.status(200).json(freqUp);
-                        } catch (error) {
-                            return res.status(500).json({ error, message: 'out error' });
+                            )
+                                .then((reg) => {
+                                    return res.status(200).json({ reg, message: 'gg' });
+                                })
+                                .catch((eg) => {
+                                    return res.status(500).json({ eg, message: 'in' });
+                                });
+                        } else {
+                            throw new Exception();
                         }
                     })
                     .catch(async (e) => {
-                        try {
-                            let user = new Freq({
-                                email: email,
-                                items: items,
-                            });
-                            // Create new user
-                            const resp = await db.freqItems.findOne(email);
-                            if (resp === null) {
-                                await user.save();
-                            }
-                            return res.status(200).json(resp);
-                        } catch (error) {
-                            return res.status(500).json({ error, message: 'in error' });
+                        let user = new Freq({
+                            email: email,
+                            items: items,
+                        });
+                        // Create new user
+                        const resp = await Freq.findOne({ email });
+                        if (resp === null) {
+                            await user
+                                .save()
+                                .then((rf) => {
+                                    return res.status(200).json({ rf, message: 'vv' });
+                                })
+                                .catch((ev) => {
+                                    return res.status(500).json(ev);
+                                });
                         }
                     });
             } else {

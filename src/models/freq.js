@@ -9,11 +9,9 @@ let freq = new Schema({
     },
     items: {
         type: [
-            [
-                {
-                    type: String,
-                },
-            ],
+            {
+                type: String,
+            },
         ],
         required: true,
     },
