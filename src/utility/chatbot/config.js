@@ -19,47 +19,47 @@ const getMoodOptions = (actionProvider) => {
 const getFaqOptions = (actionProvider) => {
   return [
     {
-      text: 'Why should I visit this website?',
+      text: 'What is the web application about?',
       handler: () => actionProvider.handleFAQ1(),
       id: 1,
     },
     {
-      text: 'Whats in it for me?',
+      text: 'What benefits it will provide me as a customer?',
       handler: () => actionProvider.handleFAQ2(),
       id: 2,
     },
     {
-      text: 'Tell me features that I can benefit from..',
+      text: 'What is Churn Prediction?',
       handler: () => actionProvider.handleFAQ3(),
       id: 3,
     },
     {
-      text: 'What is attendance tracker?',
+      text: 'How will the web app recommend products?',
       handler: () => actionProvider.handleFAQ4(),
       id: 4,
     },
     {
-      text: 'How can I view my marksheet?',
+      text: 'Which tech stack is used for building the web app?',
       handler: () => actionProvider.handleFAQ5(),
       id: 5,
     },
     {
-      text: 'Do you know about -2?',
+      text: 'What do you mean by CRUD Operations?',
       handler: () => actionProvider.handleFAQ6(),
       id: 6,
     },
     {
-      text: 'Tell me about canteens in college',
+      text: 'What is the potential scope of web app?',
       handler: () => actionProvider.handleFAQ7(),
       id: 7,
     },
     {
-      text: 'Which are some technical clubs?',
+      text: 'How many login pages are there?',
       handler: () => actionProvider.handleFAQ8(),
       id: 8,
     },
     {
-      text: 'Which are some non-technical clubs?',
+      text: 'What is MBA?',
       handler: () => actionProvider.handleFAQ9(),
       id: 9,
     },
@@ -82,9 +82,9 @@ const getJokeOptions = (actionProvider) => {
 };
 
 const config = {
-  botName: 'Vishwa Bot',
+  botName: 'StarBot',
   initialMessages: [
-    createChatBotMessage("Hi, I'm VishwaBot. Nice to meet you! I How are you doing today?", {
+    createChatBotMessage("Hi, I'm StarBot. Nice to meet you! I How are you doing today?", {
       widget: 'moodOptions',
     }),
   ],
