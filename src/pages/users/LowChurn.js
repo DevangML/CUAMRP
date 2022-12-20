@@ -15,6 +15,8 @@ const LowChurn = ({ email, loyaltyPoints }) => {
     const [memberp, setMemberp] = useState({ memberTier: '' });
     const emailp = email;
 
+    console.log(`Loyalty is : ${loyaltyPoints}`);
+
     const lchangeHandler = (e) => {
         e.preventDefault();
         setLoyalp({ loyaltyPoints: e.target.value });

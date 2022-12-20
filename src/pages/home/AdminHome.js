@@ -4,7 +4,7 @@ import Image from 'next/image';
 import image from '../../../images/left_arrow.png';
 import UserManagement from '../users/UserManagement';
 
-const TeeacherHome = ({ role, users }) => {
+const AdminHome = ({ role, users }) => {
     const [clicked, setClicked] = useState(false);
     const [crud, setCrud] = useState(false);
     const [userclick, setUserclick] = useState(false);
@@ -15,6 +15,9 @@ const TeeacherHome = ({ role, users }) => {
         loyaltyPoints: '',
         memberTier: '',
     });
+
+    console.log(`users are: ${users}`);
+    let userss = Array.from(users);
 
     if (role && role === 'Admin') {
         return (
@@ -46,7 +49,7 @@ const TeeacherHome = ({ role, users }) => {
                             {clicked &&
                                 !userclick &&
                                 users !== null &&
-                                users.map((element) => (
+                                userss.map((element) => (
                                     <div
                                         className={styles.contentwrapper}
                                         onClick={(e) => {
@@ -59,6 +62,7 @@ const TeeacherHome = ({ role, users }) => {
                                                 loyaltyPoints: element.loyaltyPoints,
                                                 memberTier: element.memberTier,
                                             });
+                                            console.log(`Users inside it is: ${element}`);
                                         }}>
                                         <div className={styles.tabs}>
                                             <div className={styles.categories}>
@@ -145,4 +149,4 @@ const TeeacherHome = ({ role, users }) => {
     return <a href="/api/auth/signin">SIGN IN</a>;
 };
 
-export default TeeacherHome;
+export default AdminHome;

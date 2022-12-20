@@ -1,18 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from '../../../styles/main.module.css';
 import Image from 'next/image';
 import image from '../../../images/left_arrow.png';
 import Tilt from 'react-parallax-tilt';
 
-const UserHome = ({ role, users }) => {
+const UserHome = ({ role, email }) => {
+    const url = 'http://localhost:3000/api';
     const [clicked, setClicked] = useState(false);
     const [mem, setMem] = useState(false);
     const [off, setOff] = useState(false);
     const [wish, setWish] = useState(false);
+    const [users, setUsers] = useState({});
     const [userclick, setUserclick] = useState(false);
-    const [loyalp, setLoyalp] = useState({ loyalP: '' });
-    console.log(role);
-    // setLoyalp(users?.loyalP);
+    const [loyalP, setLoyalP] = useState({ loyalP: '' });
+
+    useEffect(() => {
+        const getchData = async () => {
+            const gata = await fetch(`${url}/user/users?email=${email}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            const usee = await gata.json();
+
+            setLoyalP(usee.loyaltyPoints);
+        };
+
+        // call the function
+        getchData()
+            // make sure to catch any error
+            .catch(console.error);
+    }, []);
+
+    // setLoyalP(users?.loyaltyPoints);
 
     if (role && role === 'User') {
         return (
@@ -80,25 +101,7 @@ const UserHome = ({ role, users }) => {
                                     </div>
                                 </div>
                             )}
-                            {(clicked === true || mem === true || off === true) && (
-                                <div
-                                    className={styles.contentwrapper}
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                                        setClicked(false);
-                                        mem === true && setMem(false);
-                                        off === true && setOff(false);
-                                        wish === true && setWish(false);
-                                    }}>
-                                    <Image
-                                        quality={100}
-                                        src={image}
-                                        alt="Back"
-                                        width={96}
-                                        height={96}
-                                    />
-                                </div>
-                            )}
+
                             {clicked && mem && (
                                 <>
                                     <>
@@ -156,6 +159,25 @@ const UserHome = ({ role, users }) => {
                                     </>
                                     ){'}'}
                                 </>
+                            )}
+                            {(clicked === true || mem === true || off === true) && (
+                                <div
+                                    className={styles.contentwrapper}
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        setClicked(false);
+                                        mem === true && setMem(false);
+                                        off === true && setOff(false);
+                                        wish === true && setWish(false);
+                                    }}>
+                                    <Image
+                                        quality={100}
+                                        src={image}
+                                        alt="Back"
+                                        width={96}
+                                        height={96}
+                                    />
+                                </div>
                             )}
                         </section>
                     </div>

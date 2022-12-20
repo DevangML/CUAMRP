@@ -3,15 +3,38 @@ import UserHome from './home/UserHome';
 import AdminHome from './home/AdminHome';
 import Plogin from './Plogin.js';
 import { getSession } from 'next-auth/react';
+import { useState, useEffect } from 'react';
 const environment = process.env.NODE_ENV;
 
-export default function Home({ user, users }) {
+export default function Home({ user }) {
     const role = user?.role;
+    const email = user?.email;
+    const [userss, setUserss] = useState({});
+    const url = 'http://localhost:3000/api';
+
+    useEffect(() => {
+        const getchData = async () => {
+            const gata = await fetch(`${url}/user/users`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            const usee = await gata.json();
+            setUserss(usee);
+        };
+
+        // call the function
+        getchData()
+            // make sure to catch any error
+            .catch(console.error);
+    }, []);
+
     return (
         <div className={styles.container}>
             {!user && <Plogin />}
-            {user && role === 'User' && <UserHome role={role} />}
-            {user && role === 'Admin' && <AdminHome role={role} users={users} />}
+            {user && role === 'User' && <UserHome role={role} email={email} />}
+            {user && role === 'Admin' && <AdminHome role={role} users={userss} />}
         </div>
     );
 }
@@ -24,8 +47,6 @@ export async function getServerSideProps({ req }) {
         environment === 'production' ? 'https://semac.vercel.app/api' : `http://localhost:3000/api`;
 
     let user = null;
-    let time = null;
-    let users = null;
 
     if (email) {
         const res = await fetch(`${url}/auth/user/?email=${email}`, {
@@ -39,15 +60,5 @@ export async function getServerSideProps({ req }) {
         // Pass data to the page via props
     }
 
-    const resp = await fetch(`${url}/user/users`, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    });
-
-    users = await resp.json();
-    console.log(`Users in index: ${users}`);
-
-    return { props: { user, users } };
+    return { props: { user } };
 }
