@@ -14,6 +14,19 @@ const AdminHome = ({ role, users }) => {
         email: '',
         loyaltyPoints: '',
         memberTier: '',
+        CreditScore: '',
+        Age: '',
+        Tenure: '',
+        Balance: '',
+        NumOfProducts: '',
+        HasCrCard: '',
+        IsActiveMember: '',
+        EstimatedSalary: '',
+        France: '',
+        Germany: '',
+        Spain: '',
+        Female: '',
+        Male: '',
     });
 
     console.log(`users are: ${users}`);
@@ -61,6 +74,19 @@ const AdminHome = ({ role, users }) => {
                                                 email: element.email,
                                                 loyaltyPoints: element.loyaltyPoints,
                                                 memberTier: element.memberTier,
+                                                CreditScore: element.CreditScore,
+                                                Age: element.Age,
+                                                Tenure: element.Tenure,
+                                                Balance: element.Balance,
+                                                NumOfProducts: element.NumOfProducts,
+                                                HasCrCard: element.HasCrCard,
+                                                IsActiveMember: element.IsActiveMember,
+                                                EstimatedSalary: element.EstimatedSalary,
+                                                France: element.France,
+                                                Germany: element.Germany,
+                                                Spain: element.Spain,
+                                                Female: element.France,
+                                                Male: element.Male
                                             });
                                             console.log(`Users inside it is: ${element}`);
                                         }}>

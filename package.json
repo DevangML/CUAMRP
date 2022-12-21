@@ -6,7 +6,7 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "start-api": "cd src/services && venv\\Scripts\\activate && flask run --no-debugger",
+        "start-api": "next dev && cd src/services && venv\\Scripts\\activate && flask run --no-debugger",
         "pinstall": "pnpm install --production",
         "lintfix": "eslint  \"**/*.js\" --fix --cache",
         "prettier": "prettier --write \"**/*.js\"",

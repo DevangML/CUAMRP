@@ -10,7 +10,7 @@ export default function UserManagement({ users, data }) {
     const [clicked, setClicked] = useState(false);
     const [low, setLow] = useState(false);
     const [high, setHigh] = useState(false);
-    const churn = data?.churn;
+    const [churn, setChurn] = useState(0);
     const email = data?.email;
     const loyaltyPoints = data?.loyaltyPoints;
     return (
