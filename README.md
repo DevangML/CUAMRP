@@ -16,7 +16,7 @@ A webapp created using NextJS, MongoDB, and machine learning to help businesses 
 
 1.  Clone this repository
     
-        git clone https://github.com/YOUR_USERNAME/customer-attrition-management.git
+        git clone https://github.com/YOUR_USERNAME/CUAMRP.git
     
 2.  Install dependencies
     
