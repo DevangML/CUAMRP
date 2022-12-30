@@ -1,7 +1,7 @@
-Customer Attrition and Management Platform 🚀
+Customer Attrition Management and Recommendation Platform 🚀
 =============================================
 
-A webapp created using NextJS, MongoDB, and machine learning to help businesses manage and reduce customer attrition. Include a few screenshots of the app here to give an idea of what it looks like.
+A webapp created using NextJS, MongoDB, and machine learning to help businesses manage and reduce customer attrition and provide relevant recommendations.
 
 💻 Prerequisites
 ----------------
